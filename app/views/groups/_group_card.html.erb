@@ -1,0 +1,28 @@
+<div class="card" style="width: 18rem;">
+
+  <div class="card-header">
+    <h5 class="card-title">
+      <%= link_to group.group_name, group %>
+    
+      <span>
+        <%= link_to edit_group_path(group), class: "btn btn-link btn-sm text-muted" do %>
+          Edit <i class="fas fa-edit fa-fw"></i>
+        <% end %>
+
+        <%= link_to group, method: :delete, class: "btn btn-link btn-sm text-muted" do %>
+          Delete <i class="bi bi-trash-fill"></i>
+        <% end %>
+      </span>
+    </h5>
+  </div>
+
+  <div>
+    <ul class="list-group list-group-flush">
+      <% group.contacts.each do |contact|%>
+      <li class="list-group-item"><%= link_to "#{contact.name} #{contact.last_name}", contact%></li>
+      <%end%>
+      <li class="list-group-item"><%= link_to 'Edit', edit_group_path(group) %></li>
+      <li class="list-group-item"><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+    </ul>
+  </div>
+</div>  
