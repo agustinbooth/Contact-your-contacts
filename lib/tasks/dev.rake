@@ -51,6 +51,7 @@ task({ :sample_data => :environment}) do
     membership.group_id = Group.all[0].id
     membership.contact_id = Contact.all.sample.id
     membership.save
+    p membership.errors.full_messages
   end
 
   30.times do
@@ -58,6 +59,7 @@ task({ :sample_data => :environment}) do
     membership.group_id = Group.all[1].id
     membership.contact_id = Contact.all.sample.id
     membership.save
+    p membership.errors.full_messages
   end
 
   30.times do
@@ -65,6 +67,7 @@ task({ :sample_data => :environment}) do
     membership.group_id = Group.all[2].id
     membership.contact_id = Contact.all.sample.id
     membership.save
+    p membership.errors.full_messages
   end
 
 
