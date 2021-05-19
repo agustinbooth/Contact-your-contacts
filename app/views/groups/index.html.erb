@@ -3,16 +3,19 @@
 <h1>Your Groups</h1>
 <%= link_to 'New Group', new_group_path %>
 <br>
-<table>
 
-  <tbody>
-    <% @groups.each do |group| %>
-      <div class="card-group">
-        <td><%= render "group_card", group: group %></td>
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card-columns">
+        <% @groups.each do |group| %>
+            <td><%= render "group_card", group: group %></td>
+        <% end %> 
       </div>
-    <% end %>
-  </tbody>
-</table>
+    </div>   
+  </div>  
+</div> 
+
 
 
 
