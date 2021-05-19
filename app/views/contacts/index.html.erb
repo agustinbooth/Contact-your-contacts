@@ -1,6 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1 class="h1 offset-1">Your contacts</h1>
+<h2 class="h2 offset-1">Your contacts 
+  <span class="badge">
+    <%= link_to new_contact_path, class: "btn btn-link btn-sm text-muted" do %>
+    <i class="bi bi-person-plus-fill" style="font-size: 2rem"></i>
+    <% end %>
+  </span>  
+</h2>
 
 <div class="container">
   <%= search_form_for @q do |f| %>
