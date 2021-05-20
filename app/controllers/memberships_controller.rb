@@ -13,10 +13,14 @@ class MembershipsController < ApplicationController
   # GET /memberships/new
   def new
     @membership = Membership.new
+    @groups = Group.all.where(user_id: current_user)
+    @contacts = Contact.all.where(user_id: current_user).order(:last_name)
   end
 
   # GET /memberships/1/edit
   def edit
+    @groups = Group.all.where(user_id: current_user)
+    @contacts = Contact.all.where(user_id: current_user).order(:last_name)    
   end
 
   # POST /memberships or /memberships.json
@@ -25,7 +29,7 @@ class MembershipsController < ApplicationController
 
     respond_to do |format|
       if @membership.save
-        format.html { redirect_to @membership, notice: "Membership was successfully created." }
+        format.html { redirect_back fallback_location: root_url, notice: "Membership was successfully created." }
         format.json { render :show, status: :created, location: @membership }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +42,7 @@ class MembershipsController < ApplicationController
   def update
     respond_to do |format|
       if @membership.update(membership_params)
-        format.html { redirect_to @membership, notice: "Membership was successfully updated." }
+        format.html { redirect_back fallback_location: root_url, notice: "Membership was successfully updated." }
         format.json { render :show, status: :ok, location: @membership }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -51,7 +55,7 @@ class MembershipsController < ApplicationController
   def destroy
     @membership.destroy
     respond_to do |format|
-      format.html { redirect_to memberships_url, notice: "Membership was successfully destroyed." }
+      format.html { redirect_back fallback_location: root_url, notice: "Membership was successfully destroyed." }
       format.json { head :no_content }
     end
   end
