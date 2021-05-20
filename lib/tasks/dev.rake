@@ -38,9 +38,10 @@ task({ :sample_data => :environment}) do
 
   #Create groups
 
-  3.times do
+  6.times do
     group = Group.new
     group.group_name = Faker::Movie.title
+    group.user_id = User.all.sample.id
     group.save
   end
 
@@ -65,6 +66,30 @@ task({ :sample_data => :environment}) do
   30.times do
     membership = Membership.new
     membership.group_id = Group.all[2].id
+    membership.contact_id = Contact.all.sample.id
+    membership.save
+    p membership.errors.full_messages
+  end
+
+    30.times do
+    membership = Membership.new
+    membership.group_id = Group.all[3].id
+    membership.contact_id = Contact.all.sample.id
+    membership.save
+    p membership.errors.full_messages
+  end
+
+    30.times do
+    membership = Membership.new
+    membership.group_id = Group.all[4].id
+    membership.contact_id = Contact.all.sample.id
+    membership.save
+    p membership.errors.full_messages
+  end
+
+    30.times do
+    membership = Membership.new
+    membership.group_id = Group.all[5].id
     membership.contact_id = Contact.all.sample.id
     membership.save
     p membership.errors.full_messages
