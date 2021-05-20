@@ -34,7 +34,7 @@
         </div>
       </div>
     
-      <div class="row mt-2 justify-content-left offset-1">
+      <div class="row mt-3 justify-content-left offset-1">
         <%= f.submit :class => "btn btn-primary btn-block" %>
       </div>
       
@@ -48,7 +48,7 @@
 <div class= "container-flex">
   <table class ="table">
     <thead>
-      <tr class="row offset-1 justify-content-center">
+      <tr class="row justify-content-center">
         <th class="col-md-1">Name</th>
         <th class="col-md-1">Last name</th>
         <th class="col-md-2">Phone number</th>
@@ -56,12 +56,13 @@
         <th class="col-md-2">Email</th>
         <th class="col-md-1">Organization</th>
         <th class="col-md-1">Social Networks</th>
+        <th class="col-md-1"></th>
       </tr>
     </thead>
 
     <tbody>
       <% @contacts.each do |contact| %>
-        <tr class="row offset-1 justify-content-center">
+        <tr class="row justify-content-center">
           <td class="col-md-1"><%= contact.name %></td>
           <td class="col-md-1"><%= contact.last_name %></td>
           <td class="col-md-2"><%= contact.phone_number %></td>
@@ -69,6 +70,17 @@
           <td class="col-md-2"><%= contact.email %></td>
           <td class="col-md-1"><%= contact.organization %></td>
           <td class="col-md-1">Show social Networks</td>
+          <td class="col-md-1">
+
+            <%= link_to edit_contact_path(contact), class: "btn btn-link btn-sm text-muted" do %>
+              <i class="bi bi-pencil-fill"></i>
+            <% end %>
+
+            <%= link_to contact, method: :delete, class: "btn btn-link btn-sm text-muted" do %>
+              <i class="bi bi-trash-fill"></i>
+            <% end %>
+
+          </td>
         </tr>
       <% end %>
     </tbody>
