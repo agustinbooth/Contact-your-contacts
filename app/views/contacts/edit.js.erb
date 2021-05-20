@@ -1,3 +1,3 @@
 var contact = $("#<%= dom_id(@contact) %>")
 
-contact.replaceWith("")
+contact.replaceWith("<%= j(render "edit_form", contact: @contact)%>")

@@ -1,64 +1,49 @@
-<%= form_with(model: contact, local: false) do |form| %>
-  <% if contact.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+<tr id="<%= dom_id(contact) %>" class="form-row justify-content-center">
+  <%= form_with(model: contact, local: false) do |form| %>
+    <% if contact.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
 
-      <ul>
-        <% contact.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+        <ul>
+          <% contact.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-<tr>
-  <td class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+
+  <td class="col-md-1">
+    <%= form.text_field :name, class: "form" %>
   </td>
 
-  <td class="field">
-    <%= form.label :last_name %>
+  <td class="col-md-1">
     <%= form.text_field :last_name %>
   </td>
 
-  <td class="field">
-    <%= form.label :phone_number %>
+  <td class="col-md-2">
     <%= form.text_field :phone_number %>
   </td>
 
-  <td class="field">
-    <%= form.label :communication_channel %>
+  <td class="col-md-1">
     <%= form.text_field :communication_channel %>
   </td>
 
-  <td class="field">
-    <%= form.label :email %>
+  <td class="col-md-2">
     <%= form.text_field :email %>
   </td>
 
-  <td class="field">
-    <%= form.label :organization %>
+  <td class="col-md-1">
     <%= form.text_field :organization %>
   </td>
 
-  <td class="field">
-    <%= form.label :facebook %>
+  <td class="col-md-1">
     <%= form.text_field :facebook %>
   </td>
 
-  <td class="field">
-    <%= form.label :instagram %>
-    <%= form.text_field :instagram %>
-  </td>
-
-  <td class="field">
-    <%= form.label :twitter %>
-    <%= form.text_field :twitter %>
-  </td>
-
-  <td class="actions align-content-right">
+  <td class="col-md-1">
     <%= form.submit class: 'btn btn-primary'%>
   </td>
-</tr>  
-<% end %>
+ 
+  <% end %>
+</tr> 
