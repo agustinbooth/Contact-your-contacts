@@ -62,7 +62,7 @@
 
     <tbody>
       <% @contacts.each do |contact| %>
-        <tr class="row justify-content-center">
+        <tr id="<%= dom_id(contact) %>" class="row justify-content-center">
           <td class="col-md-1"><%= contact.name %></td>
           <td class="col-md-1"><%= contact.last_name %></td>
           <td class="col-md-2"><%= contact.phone_number %></td>
@@ -76,7 +76,7 @@
               <i class="bi bi-pencil-fill"></i>
             <% end %>
 
-            <%= link_to contact, method: :delete, class: "btn btn-link btn-sm text-muted" do %>
+            <%= link_to contact, method: :delete, class: "btn btn-link btn-sm text-muted", remote: true do %>
               <i class="bi bi-trash-fill"></i>
             <% end %>
 
