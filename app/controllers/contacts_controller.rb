@@ -5,6 +5,7 @@ class ContactsController < ApplicationController
   def index
   @q = Contact.ransack(params[:q])
   @contacts = @q.result.where(user_id: current_user).order(:last_name)
+  @contact = Contact.new
   end
 
   # GET /contacts/1 or /contacts/1.json
