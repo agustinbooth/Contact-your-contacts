@@ -11,52 +11,54 @@
     </div>
   <% end %>
 
-  <div class="field">
+<tr>
+  <td class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
-  </div>
+  </td>
 
-  <div class="field">
+  <td class="field">
     <%= form.label :last_name %>
     <%= form.text_field :last_name %>
-  </div>
+  </td>
 
-  <div class="field">
+  <td class="field">
     <%= form.label :phone_number %>
     <%= form.text_field :phone_number %>
-  </div>
+  </td>
 
-  <div class="field">
+  <td class="field">
     <%= form.label :communication_channel %>
     <%= form.text_field :communication_channel %>
-  </div>
+  </td>
 
-  <div class="field">
+  <td class="field">
     <%= form.label :email %>
     <%= form.text_field :email %>
-  </div>
+  </td>
 
-  <div class="field">
+  <td class="field">
     <%= form.label :organization %>
     <%= form.text_field :organization %>
-  </div>
+  </td>
 
-  <div class="field">
+  <td class="field">
     <%= form.label :facebook %>
     <%= form.text_field :facebook %>
-  </div>
+  </td>
 
-  <div class="field">
+  <td class="field">
     <%= form.label :instagram %>
     <%= form.text_field :instagram %>
-  </div>
+  </td>
 
-  <div class="field">
+  <td class="field">
     <%= form.label :twitter %>
     <%= form.text_field :twitter %>
-  </div>
+  </td>
 
-  <div class="actions align-content-right">
+  <td class="actions align-content-right">
     <%= form.submit class: 'btn btn-primary'%>
-  </div>
+  </td>
+</tr>  
 <% end %>
