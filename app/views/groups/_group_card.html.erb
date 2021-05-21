@@ -20,20 +20,26 @@
   </div>
 
   <div>
-    <details > <!--I need to change this for a modal or dropdown-->
-      <summary> Show contacts </summary>
-      <ul class="list-group list-group-flush">
-        <% group.contacts.order(:last_name).each do |contact|%>
-        <li class="list-group-item">
-          <%= link_to "#{contact.name} #{contact.last_name}", contact%> uses <%= contact.communication_channel%> 
-            <span class="badge float-right"> 
-              <%= link_to membership_path(Membership.where(group_id: group.id, contact_id: contact.id).ids), method: :delete, class: "btn btn-link btn-sm text-muted" do %>
-              <i class="bi bi-trash-fill"></i>
-              <% end %>
-            </span>
-        </li>
-        <%end%>
-      </ul>
-    </details>
+
+      <button class="btn btn-primary btn-sm" type="button" data-toggle="collapse" data-target="#<%= dom_id(group) %>_contacts" aria-expanded="false" aria-controls="<%= dom_id(group) %>_contacts">
+        Show contacts
+      </button>
+
+    <div class="collapse" id="<%= dom_id(group) %>_contacts">
+      <div class="card card-body">
+        <ul class="list-group list-group-flush">
+          <% group.contacts.order(:last_name).each do |contact|%>
+          <li class="list-group-item" id="<%= dom_id(group) %>_<%= dom_id(contact) %>">
+            <%= link_to "#{contact.name} #{contact.last_name}", contact%> uses <%= contact.communication_channel%> 
+              <span class="badge float-right"> 
+                <%= link_to membership_path(Membership.where(group_id: group.id, contact_id: contact.id).ids), method: :delete, class: "btn btn-link btn-sm text-muted" do %>
+                <i class="bi bi-trash-fill"></i>
+                <% end %>
+              </span>
+          </li>
+          <%end%>
+        </ul>        
+      </div>
+    </div>    
   </div>
 </div>  
