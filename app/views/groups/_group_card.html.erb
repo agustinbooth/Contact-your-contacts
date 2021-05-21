@@ -1,4 +1,4 @@
-<div class="card" style="width: 18rem;">
+<div class="card" id="<%= dom_id(group) %>">
 
   <div class="card-header">
     <h6 class="card-title">
@@ -12,7 +12,7 @@
             <i class="bi bi-pencil-fill"></i>
           <% end %>
 
-          <%= link_to group, method: :delete, class: "btn btn-link btn-sm text-muted" do %>
+          <%= link_to group, method: :delete, class: "btn btn-link btn-sm text-muted", remote: true do %>
             <i class="bi bi-trash-fill"></i>
           <% end %>
         </span>
