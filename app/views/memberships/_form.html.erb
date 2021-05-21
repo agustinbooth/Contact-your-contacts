@@ -1,4 +1,4 @@
-<%= form_with(model: membership) do |form| %>
+<%= form_with(model: membership, local: false, id: "new_membership_form_for_"+dom_id(@group)) do |form| %>
   <% if membership.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(membership.errors.count, "error") %> prohibited this membership from being saved:</h2>
@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :group_id %>
-    <%= form.select(:group_id, @groups.map { |group| [ group.group_name, group.id ] }) %>
+    <%= form.select :group_id, options_for_select(@groups.map{ |group| [group.group_name, group.id]}, @group.id)%>
   </div>
 
   <div class="field">

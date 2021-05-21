@@ -12,9 +12,16 @@ class MembershipsController < ApplicationController
 
   # GET /memberships/new
   def new
+    @group = Group.all.find(params.fetch("group_id"))
     @membership = Membership.new
     @groups = current_user.groups
     @contacts = current_user.contacts.order(:last_name)
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+      
   end
 
   # GET /memberships/1/edit
@@ -26,11 +33,13 @@ class MembershipsController < ApplicationController
   # POST /memberships or /memberships.json
   def create
     @membership = Membership.new(membership_params)
+    @group = @membership.group
 
     respond_to do |format|
       if @membership.save
         format.html { redirect_back fallback_location: root_url, notice: "Membership was successfully created." }
         format.json { render :show, status: :created, location: @membership }
+        format.js
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @membership.errors, status: :unprocessable_entity }
@@ -44,6 +53,7 @@ class MembershipsController < ApplicationController
       if @membership.update(membership_params)
         format.html { redirect_back fallback_location: root_url, notice: "Membership was successfully updated." }
         format.json { render :show, status: :ok, location: @membership }
+        format.js
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @membership.errors, status: :unprocessable_entity }
@@ -57,6 +67,7 @@ class MembershipsController < ApplicationController
     respond_to do |format|
       format.html { redirect_back fallback_location: root_url, notice: "Membership was successfully destroyed." }
       format.json { head :no_content }
+      format.js
     end
   end
 

@@ -4,6 +4,7 @@ class GroupsController < ApplicationController
   # GET /groups or /groups.json
   def index
     @groups = current_user.groups
+    @group = Group.new
   end
 
   # GET /groups/1 or /groups/1.json
@@ -27,6 +28,7 @@ class GroupsController < ApplicationController
       if @group.save
         format.html { redirect_to groups_path, notice: "Group was successfully created." }
         format.json { render :index, status: :created, location: @group }
+        format.js
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @group.errors, status: :unprocessable_entity }
@@ -40,6 +42,7 @@ class GroupsController < ApplicationController
       if @group.update(group_params)
         format.html { redirect_to groups_path, notice: "Group was successfully updated." }
         format.json { render :show, status: :ok, location: @group }
+        format.js
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @group.errors, status: :unprocessable_entity }
@@ -53,6 +56,7 @@ class GroupsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to groups_url, notice: "Group was successfully destroyed." }
       format.json { head :no_content }
+      format.js
     end
   end
 
