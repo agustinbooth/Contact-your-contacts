@@ -47,54 +47,12 @@ task({ :sample_data => :environment}) do
 
   #Create memberships
 
-  30.times do
-    membership = Membership.new
-    membership.group_id = Group.all[0].id
-    membership.contact_id = Contact.all.sample.id
-    membership.save
-    p membership.errors.full_messages
-  end
-
-  30.times do
-    membership = Membership.new
-    membership.group_id = Group.all[1].id
-    membership.contact_id = Contact.all.sample.id
-    membership.save
-    p membership.errors.full_messages
-  end
-
-  30.times do
-    membership = Membership.new
-    membership.group_id = Group.all[2].id
-    membership.contact_id = Contact.all.sample.id
-    membership.save
-    p membership.errors.full_messages
-  end
-
+  Group.all.each do |group|
     30.times do
-    membership = Membership.new
-    membership.group_id = Group.all[3].id
-    membership.contact_id = Contact.all.sample.id
-    membership.save
-    p membership.errors.full_messages
+      membership = group.memberships.create(contact: Contact.all.sample)
+      p membership.errors.full_messages
+    end
   end
-
-    30.times do
-    membership = Membership.new
-    membership.group_id = Group.all[4].id
-    membership.contact_id = Contact.all.sample.id
-    membership.save
-    p membership.errors.full_messages
-  end
-
-    30.times do
-    membership = Membership.new
-    membership.group_id = Group.all[5].id
-    membership.contact_id = Contact.all.sample.id
-    membership.save
-    p membership.errors.full_messages
-  end
-
 
   p "You have created #{User.all.count} users"
   p "You have created #{Contact.all.count} contacts"
