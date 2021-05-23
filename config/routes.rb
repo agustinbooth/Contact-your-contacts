@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :memberships
   root "groups#index"
+  resources :memberships
   devise_for :users
   resources :groups
   resources :contacts

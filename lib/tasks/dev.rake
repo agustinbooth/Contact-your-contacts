@@ -1,7 +1,6 @@
 desc "Fill the database tables with some sample data"
 
 task({ :sample_data => :environment}) do
-  require 'faker'
 
   User.destroy_all
   Contact.destroy_all
@@ -9,15 +8,8 @@ task({ :sample_data => :environment}) do
   Membership.destroy_all
 
   #Create Users
-  user = User.new
-  user.email = "bob@example.com"
-  user.password = "password"
-  user.save
-
-  user = User.new
-  user.email = "alice@example.com"
-  user.password = "password"
-  user.save
+  User.create(email: "bob@example.com", password: "password")
+  User.create(email: "alice@example.com", password: "password")
 
   #Create Contacts
 
