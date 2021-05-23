@@ -10,7 +10,7 @@
 <div class="container-fluid">
   <div class="row offset-2">
       <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_group_modal">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_group_modal" data-backdrop="false">
       New group
     </button>
 
@@ -40,7 +40,7 @@
 <div class="container-fluid">
   <div class="row justify-content-center">
     <div class="col-md-8">
-      <div class="card-columns">
+      <div class="card-columns" id="group_of_cards">
         <% @groups.each do |group| %>
             <td><%= render "group_card", group: group %></td>
         <% end %> 

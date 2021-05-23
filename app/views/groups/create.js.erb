@@ -1,3 +1,5 @@
 var added_group = $("<%= j(render 'groups/group_card', group: @group)%>");
 
 $("#new_group_modal").fadeOut();
+
+$("#group_78").replaceWith(added_group)
