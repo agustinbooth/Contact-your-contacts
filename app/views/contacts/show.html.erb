@@ -1,0 +1,52 @@
+<p>
+  <strong>Name:</strong>
+  <%= @contact.name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @contact.last_name %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @contact.phone_number %>
+</p>
+
+<p>
+  <strong>Communication channel:</strong>
+  <%= @contact.communication_channel %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @contact.user_id %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @contact.email %>
+</p>
+
+<p>
+  <strong>Organization:</strong>
+  <%= @contact.organization %>
+</p>
+
+<p>
+  <strong>Facebook:</strong>
+  <%= @contact.facebook %>
+</p>
+
+<p>
+  <strong>Instagram:</strong>
+  <%= @contact.instagram %>
+</p>
+
+<p>
+  <strong>Twitter:</strong>
+  <%= @contact.twitter %>
+</p>
+
+<%= link_to 'Edit', edit_contact_path(@contact) %> |
+<%= link_to 'Back', contacts_path %>

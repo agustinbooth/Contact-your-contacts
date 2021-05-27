@@ -1,0 +1,29 @@
+<div class="container-fluid">
+  <div class="row offset-2">
+    <h1>Your Groups</h1>
+  </div>
+</div>    
+
+
+<div class="container-fluid">
+  <div class="row offset-2">
+  <%= link_to 'New Group', new_group_path %> 
+  </div>
+</div>
+<br>
+
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card-columns">
+        <% @groups.each do |group| %>
+            <td><%= render "group_card", group: group %></td>
+        <% end %>
+      </div>
+    </div>   
+  </div>  
+</div> 
+
+
+
+
