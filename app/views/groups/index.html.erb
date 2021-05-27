@@ -16,9 +16,8 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card-columns">
-        <% @groups.each do |group| %>
-            <td><%= render "group_card", group: group %></td>
-        <% end %>
+        scaffold_membership_and_adding_links_to_group_page
+        <td><%= render partial: "group_card", collection: @groups, as: :group %></td>
       </div>
     </div>   
   </div>  
