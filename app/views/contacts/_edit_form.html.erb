@@ -1,0 +1,49 @@
+<tr id="<%= dom_id(contact) %>" class="form-row justify-content-center">
+  <%= form_with(model: contact, local: false) do |form| %>
+    <% if contact.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+
+        <ul>
+          <% contact.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+
+  <td class="col-md-1">
+    <%= form.text_field :name, class: "form" %>
+  </td>
+
+  <td class="col-md-1">
+    <%= form.text_field :last_name %>
+  </td>
+
+  <td class="col-md-2">
+    <%= form.text_field :phone_number %>
+  </td>
+
+  <td class="col-md-1">
+    <%= form.text_field :communication_channel %>
+  </td>
+
+  <td class="col-md-2">
+    <%= form.text_field :email %>
+  </td>
+
+  <td class="col-md-1">
+    <%= form.text_field :organization %>
+  </td>
+
+  <td class="col-md-1">
+    <%= form.text_field :facebook %>
+  </td>
+
+  <td class="col-md-1">
+    <%= form.submit class: 'btn btn-primary'%>
+  </td>
+ 
+  <% end %>
+</tr> 

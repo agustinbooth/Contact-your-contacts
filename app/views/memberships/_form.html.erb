@@ -13,12 +13,12 @@
 
   <div class="field">
     <%= form.label :group_id %>
-    <%= form.number_field :group_id %>
+    <%= form.select(:group_id, @groups.map { |group| [ group.group_name, group.id ] }) %>
   </div>
 
   <div class="field">
     <%= form.label :contact_id %>
-    <%= form.number_field :contact_id %>
+    <%= form.select(:contact_id, @contacts.map { |contact| [ contact.name+" "+contact.last_name, contact.id ] }) %>
   </div>
 
   <div class="actions">

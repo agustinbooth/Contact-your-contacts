@@ -3,7 +3,9 @@ class ContactsController < ApplicationController
 
   # GET /contacts or /contacts.json
   def index
-    @contacts = Contact.all
+  @q = current_user.contacts.order(:last_name).ransack(params[:q])
+  @contacts = @q.result
+  @contact = Contact.new
   end
 
   # GET /contacts/1 or /contacts/1.json
@@ -22,11 +24,13 @@ class ContactsController < ApplicationController
   # POST /contacts or /contacts.json
   def create
     @contact = Contact.new(contact_params)
+    @contact.user_id = current_user.id
 
     respond_to do |format|
       if @contact.save
-        format.html { redirect_to @contact, notice: "Contact was successfully created." }
+        format.html { redirect_back fallback_location: root_url, notice: "Contact was successfully created." }
         format.json { render :show, status: :created, location: @contact }
+        format.js
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @contact.errors, status: :unprocessable_entity }
@@ -40,6 +44,7 @@ class ContactsController < ApplicationController
       if @contact.update(contact_params)
         format.html { redirect_to @contact, notice: "Contact was successfully updated." }
         format.json { render :show, status: :ok, location: @contact }
+        format.js
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @contact.errors, status: :unprocessable_entity }
@@ -53,6 +58,7 @@ class ContactsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to contacts_url, notice: "Contact was successfully destroyed." }
       format.json { head :no_content }
+      format.js
     end
   end
 

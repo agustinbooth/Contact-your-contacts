@@ -1,0 +1,5 @@
+var added_contact = $("<%= j(render @contact)%>");
+
+$("#contacts_table_body").before(added_contact);
+
+$("#new_contact_modal").fadeOut();

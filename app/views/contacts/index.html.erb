@@ -1,43 +1,117 @@
-<h1>Contacts</h1>
+<h2 class="h2 offset-1">Your contacts
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Last name</th>
-      <th>Phone number</th>
-      <th>Communication channel</th>
-      <th>User</th>
-      <th>Email</th>
-      <th>Organization</th>
-      <th>Facebook</th>
-      <th>Instagram</th>
-      <th>Twitter</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<!-- Trigger/Open The Modal TODO did not realize that this was not working because I did not install popper.
+will change for a bootstrap code later-->
+<button id="new_contact_button" class="btn btn-white">
+<i class="bi bi-person-plus-fill" style="font-size: 2rem; color: blue"></i>
+</button>
 
-  <tbody>
-    <% @contacts.each do |contact| %>
-      <tr>
-        <td><%= contact.name %></td>
-        <td><%= contact.last_name %></td>
-        <td><%= contact.phone_number %></td>
-        <td><%= contact.communication_channel %></td>
-        <td><%= contact.user_id %></td>
-        <td><%= contact.email %></td>
-        <td><%= contact.organization %></td>
-        <td><%= contact.facebook %></td>
-        <td><%= contact.instagram %></td>
-        <td><%= contact.twitter %></td>
-        <td><%= link_to 'Show', contact %></td>
-        <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
-        <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</h2>
+
+<!-- The Modal -->
+<div id="new_contact_modal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Create a new contact</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= render "form", contact: @contact %>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+// Get the modal
+var modal = document.getElementById("new_contact_modal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("new_contact_button");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+<div class="container">
+  <%= search_form_for @q do |f| %>
+    <h4>Search for a contact:</h4>
+    
+      <div class="row justify-content-left offset-1">
+        <div class="col-md-3">
+          <%= f.label :name_cont, "Name containing" %>
+          <%= f.text_field :name_cont, :placeholder => "Enter a few characters" %>
+        </div>
+
+        <div class="col-md-3">
+          <%= f.label :last_name_cont, "Last name containing" %>
+          <%= f.text_field :last_name_cont, :placeholder => "Enter a few characters" %>
+        </div>
+
+        <div class="col-md-3">
+          <%= f.label :organization_cont, "Organization containing" %>
+          <%= f.text_field :organization_cont, :placeholder => "Enter a few characters" %>
+        </div>
+
+        <div class="col-md-3">
+          <%= f.label :phone_number_cont, "Phone number containing" %>
+          <%= f.text_field :phone_number_cont, :placeholder => "Enter a few characters" %>
+        </div>
+      </div>
+    
+      <div class="row mt-3 justify-content-left offset-1">
+        <%= f.submit :class => "btn btn-primary btn-block" %>
+      </div>
+      
+      <div class="row mt-1 mb-3 justify-content-left offset-1">
+        <a href="/contacts">Clear filters</a>
+      </div>  
+
+  <% end %>
+</div>
+
+<tbody>
+<div class= "container-flex">
+  <table class ="table">
+    <thead>
+      <tr class="row justify-content-center">
+        <th class="col-md-1">Name</th>
+        <th class="col-md-1">Last name</th>
+        <th class="col-md-2">Phone number</th>
+        <th class="col-md-1">Channel</th>
+        <th class="col-md-2">Email</th>
+        <th class="col-md-1">Organization</th>
+        <th class="col-md-2">Social Networks</th>
+        <th class="col-md-1"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
-
-<%= link_to 'New Contact', new_contact_path %>
+    <tbody id="contacts_table_body">
+      <%= render @contacts%>
+    </tbody>
+  </table>
+</div>
+</tbody>
