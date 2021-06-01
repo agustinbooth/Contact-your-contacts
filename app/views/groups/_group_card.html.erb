@@ -8,9 +8,10 @@
           <i class="bi bi-person-plus-fill"></i>
           <% end %>
 
-          <%= link_to edit_group_path(group), class: "btn btn-link btn-sm text-muted" do %>
+        <button type="button" class="btn btn-white" data-toggle="modal" data-target="#edit_group_modal" data-backdrop="false">
             <i class="bi bi-pencil-fill"></i>
-          <% end %>
+        </button>
+        
 
           <%= link_to group, method: :delete, class: "btn btn-link btn-sm text-muted", remote: true do %>
             <i class="bi bi-trash-fill"></i>
