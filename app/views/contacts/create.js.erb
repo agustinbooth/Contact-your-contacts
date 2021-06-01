@@ -1,4 +1,4 @@
-var added_contact = $("<%= j(render 'contacts/contact', contact: @contact)%>");
+var added_contact = $("<%= j(render @contact)%>");
 
 $("#contacts_table_body").before(added_contact);
 

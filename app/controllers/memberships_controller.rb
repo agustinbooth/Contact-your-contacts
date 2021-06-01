@@ -13,8 +13,8 @@ class MembershipsController < ApplicationController
   # GET /memberships/new
   def new
     @membership = Membership.new
-    @groups = Group.all.where(user_id: current_user)
-    @contacts = Contact.all.where(user_id: current_user).order(:last_name)
+    @groups = current_user.groups
+    @contacts = current_user.contacts.order(:last_name)
   end
 
   # GET /memberships/1/edit

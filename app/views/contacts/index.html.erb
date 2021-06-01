@@ -110,9 +110,7 @@ window.onclick = function(event) {
     </thead>
 
     <tbody id="contacts_table_body">
-      <% @contacts.each do |contact| %>
-        <%= render 'contacts/contact', contact: contact %>
-      <% end %>
+      <%= render @contacts%>
     </tbody>
   </table>
 </div>

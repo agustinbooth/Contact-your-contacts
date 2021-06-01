@@ -3,8 +3,8 @@ class ContactsController < ApplicationController
 
   # GET /contacts or /contacts.json
   def index
-  @q = Contact.ransack(params[:q])
-  @contacts = @q.result.where(user_id: current_user).order(:last_name)
+  @q = current_user.contacts.order(:last_name).ransack(params[:q])
+  @contacts = @q.result
   @contact = Contact.new
   end
 
