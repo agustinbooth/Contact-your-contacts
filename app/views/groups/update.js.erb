@@ -1,0 +1,3 @@
+var updated_group = $("<%= j(render 'groups/group_card', group: @group)%>");
+
+$("#<%= dom_id(@group)%>").replaceWith(updated_group)

@@ -1,1 +1,2 @@
-console.log("HOwdy!")
+$("#<%= dom_id(@group)%>_group_name").replaceWith($("<%= j(render 'groups/form', group: @group)%>"))
+

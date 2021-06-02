@@ -2,16 +2,15 @@
 
   <div class="card-header">
     <h6 class="card-title">
-      <%= link_to group.group_name, group %>    
+      <%= link_to group.group_name, group, id: dom_id(group)+"_group_name" %>    
         <span>
           <%= link_to new_membership_path, class: "btn btn-link btn-sm text-muted" do %>
           <i class="bi bi-person-plus-fill"></i>
           <% end %>
-
-        <button type="button" class="btn btn-white" data-toggle="modal" data-target="#edit_group_modal" data-backdrop="false">
+          
+          <%= link_to edit_group_path(group), class: "btn btn-link btn-sm text-muted", remote: true do %>
             <i class="bi bi-pencil-fill"></i>
-        </button>
-        
+          <% end %>
 
           <%= link_to group, method: :delete, class: "btn btn-link btn-sm text-muted", remote: true do %>
             <i class="bi bi-trash-fill"></i>
