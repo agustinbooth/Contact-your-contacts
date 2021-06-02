@@ -33,6 +33,7 @@ class MembershipsController < ApplicationController
   # POST /memberships or /memberships.json
   def create
     @membership = Membership.new(membership_params)
+    @group = @membership.group
 
     respond_to do |format|
       if @membership.save
