@@ -12,9 +12,16 @@ class MembershipsController < ApplicationController
 
   # GET /memberships/new
   def new
+    @group = Group.all.find(params.fetch("group_id"))
     @membership = Membership.new
     @groups = Group.all.where(user_id: current_user)
     @contacts = Contact.all.where(user_id: current_user).order(:last_name)
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+      
   end
 
   # GET /memberships/1/edit
