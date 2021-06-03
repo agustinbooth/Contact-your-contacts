@@ -1,0 +1,6 @@
+var edited_contact = $("<%= j(render @contact)%>");
+
+$("#<%=dom_id(@contact)%>").replaceWith(edited_contact);
+
+$("#edit<%=@contact.id%>").hide();
+
