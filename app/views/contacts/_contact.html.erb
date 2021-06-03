@@ -23,9 +23,12 @@
   </td>
   <td class="col-md-1">
 
-    <%= link_to edit_contact_path(contact), class: "btn btn-link btn-sm text-muted" do %>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-link btn-sm text-muted" data-toggle="modal" data-target="#editContact" data-whatever=contact>
       <i class="bi bi-pencil-fill"></i>
-    <% end %>
+    </button>
+
+    <%= render "edit_contact_modal"%>
 
     <%= link_to contact, method: :delete, class: "btn btn-link btn-sm text-muted", remote: true do %>
       <i class="bi bi-trash-fill"></i>
