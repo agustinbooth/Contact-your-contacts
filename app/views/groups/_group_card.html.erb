@@ -30,7 +30,7 @@
       <div class="card card-body">
         <ul class="list-group list-group-flush">
           <% group.contacts.order(:last_name).each do |contact|%>
-          <li class="list-group-item" id="membership_<%= Membership.where(group_id: group.id, contact_id: contact.id).ids.first %>">
+          <li class="list-group-item" id="membership_<%= Membership.find_by(group_id: group.id, contact_id: contact.id).id %>">
             <%= link_to "#{contact.name} #{contact.last_name}", contact%> uses <%= contact.communication_channel%> 
               <span class="badge float-right"> 
                 <%= link_to membership_path(Membership.where(group_id: group.id, contact_id: contact.id).ids), method: :delete, remote: true, class: "btn btn-link btn-sm text-muted" do %>
