@@ -1,2 +1,7 @@
-var membership_form = $("#new_membership_form_for_<%=dom_id(@group)%>")
-membership_form.replaceWith("<%=j(render "groups/group_card", group: @group)%>")
+<% if @membership.errors.any? %>
+  alert("ERROR(S): <%= j @membership.errors.full_messages.join('; ') %>")
+<% else %>
+  var membership_form = $("#new_membership_form_for_<%=dom_id(@group)%>")
+  membership_form.replaceWith("<%=j(render "groups/group_card", group: @group)%>")
+<% end %>
+

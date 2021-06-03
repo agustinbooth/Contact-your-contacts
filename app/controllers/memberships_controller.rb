@@ -43,6 +43,7 @@ class MembershipsController < ApplicationController
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @membership.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
