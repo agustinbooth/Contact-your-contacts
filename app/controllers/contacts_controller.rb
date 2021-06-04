@@ -1,5 +1,6 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: %i[ show edit update destroy ]
+  after_action :verify_authorized, except: :index
 
   # GET /contacts or /contacts.json
   def index
@@ -10,21 +11,25 @@ class ContactsController < ApplicationController
 
   # GET /contacts/1 or /contacts/1.json
   def show
+    authorize @contact
   end
 
   # GET /contacts/new
   def new
     @contact = Contact.new
+    authorize @contact
   end
 
   # GET /contacts/1/edit
   def edit
+    authorize @contact    
   end
 
   # POST /contacts or /contacts.json
   def create
     @contact = Contact.new(contact_params)
     @contact.user_id = current_user.id
+    authorize @contact
 
     respond_to do |format|
       if @contact.save
@@ -40,6 +45,7 @@ class ContactsController < ApplicationController
 
   # PATCH/PUT /contacts/1 or /contacts/1.json
   def update
+    authorize @contact
     respond_to do |format|
       if @contact.update(contact_params)
         format.html { redirect_to @contact, notice: "Contact was successfully updated." }
@@ -54,6 +60,7 @@ class ContactsController < ApplicationController
 
   # DELETE /contacts/1 or /contacts/1.json
   def destroy
+    authorize @contact
     @contact.destroy
     respond_to do |format|
       format.html { redirect_to contacts_url, notice: "Contact was successfully destroyed." }

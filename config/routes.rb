@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root "groups#index"
-  resources :memberships
+  resources :memberships, only: [:new, :create, :destroy]
   devise_for :users
   resources :groups
   resources :contacts
