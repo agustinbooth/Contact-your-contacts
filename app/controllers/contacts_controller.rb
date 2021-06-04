@@ -16,8 +16,8 @@ class ContactsController < ApplicationController
 
   # GET /contacts/new
   def new
-    authorize @contact
     @contact = Contact.new
+    authorize @contact
   end
 
   # GET /contacts/1/edit
