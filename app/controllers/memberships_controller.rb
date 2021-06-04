@@ -19,7 +19,6 @@ class MembershipsController < ApplicationController
     @contacts = current_user.contacts.order(:last_name)
     authorize @membership
     
-
     respond_to do |format|
       format.html
       format.js
