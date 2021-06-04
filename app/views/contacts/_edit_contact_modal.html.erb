@@ -1,0 +1,39 @@
+
+<!-- Modal -->
+<div class="modal" id="edit<%= contact.id%>" tabindex="-1" aria-labelledby="edit<%= contact.id%>Label" aria-hidden="true" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="edit<%= contact.id%>Label">Edit contact</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render "form", contact: contact %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- The Modal -->
+<div id="new_contact_modal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Create a new contact</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= render "form", contact: @contact %>
+        </div>
+    </div>
+  </div>
+</div>

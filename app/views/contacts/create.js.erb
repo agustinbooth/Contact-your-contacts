@@ -1,5 +1,5 @@
 var added_contact = $("<%= j(render @contact)%>");
 
-$("#group_of_cards").append(added_contact);
+$("#contacts_table_body").prepend(added_contact);
 
 $("#new_contact_modal").fadeOut();
