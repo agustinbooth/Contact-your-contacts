@@ -82,4 +82,5 @@ group :development do
   gem 'rubocop-performance'
   gem 'rubocop-rails'
   gem 'web_git', github: 'firstdraft/web_git', branch: 'spring2020'
+  gem 'rails-erd'
 end
