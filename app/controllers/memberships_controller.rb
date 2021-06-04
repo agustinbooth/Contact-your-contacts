@@ -13,7 +13,7 @@ class MembershipsController < ApplicationController
 
   # GET /memberships/new
   def new
-    @group = Group.all.find(params.fetch("group_id"))
+    @group = Group.find(params.fetch("group_id"))
     @membership = Membership.new
     @groups = current_user.groups
     @contacts = current_user.contacts.order(:last_name)
