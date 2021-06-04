@@ -1,5 +1,6 @@
 class MembershipsController < ApplicationController
   before_action :set_membership, only: %i[ show edit update destroy ]
+  after_action :verify_authorized, except: :index
 
   # GET /memberships or /memberships.json s
   def index
@@ -16,6 +17,8 @@ class MembershipsController < ApplicationController
     @membership = Membership.new
     @groups = current_user.groups
     @contacts = current_user.contacts.order(:last_name)
+    authorize @membership
+    
 
     respond_to do |format|
       format.html
@@ -46,6 +49,7 @@ class MembershipsController < ApplicationController
         format.js
       end
     end
+    authorize @membership
   end
 
   # PATCH/PUT /memberships/1 or /memberships/1.json
@@ -64,6 +68,7 @@ class MembershipsController < ApplicationController
 
   # DELETE /memberships/1 or /memberships/1.json
   def destroy
+    authorize @membership
     @membership.destroy
     respond_to do |format|
       format.html { redirect_back fallback_location: root_url, notice: "Membership was successfully destroyed." }
