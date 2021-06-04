@@ -2,7 +2,7 @@ class MembershipsController < ApplicationController
   before_action :set_membership, only: %i[ show edit update destroy ]
   after_action :verify_authorized, except: :index
 
-  # GET /memberships or /memberships.json
+  # GET /memberships or /memberships.json s
   def index
     @memberships = Membership.all
   end
@@ -18,7 +18,6 @@ class MembershipsController < ApplicationController
     @groups = current_user.groups
     @contacts = current_user.contacts.order(:last_name)
     authorize @membership
-    
 
     respond_to do |format|
       format.html
